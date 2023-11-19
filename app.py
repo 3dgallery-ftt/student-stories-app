@@ -20,9 +20,9 @@ hide_decoration_bar_style = '''
 st.markdown(hide_decoration_bar_style, unsafe_allow_html=True)
 st.title('#твоеслово.фтт')
 
+st.markdown('Расскажи что-нибудь')
 with st.spinner('Отправляем ответ...'):
     with st.form('form'):
-        st.markdown('Расскажи что-нибудь')
         txt_input = st.text_area(label='.', placeholder='Нажми и печатай', 
                                 label_visibility='collapsed', height=200)
         submitted = st.form_submit_button("Поделиться")
@@ -34,15 +34,6 @@ with st.spinner('Отправляем ответ...'):
             m = sha256()
             h = m.update((date + txt_input).encode())
             table.create({'id': m.hexdigest(), 'date': date, 'text': txt_input})
-            # conn = st.connection("gsheets", type=GSheetsConnection)
-            # df = conn.read()
-            # df['date'] = pd.to_datetime(df['date'])
-            # df = df[df['date'].notna() & df['text'].notna()]
-            # df.loc[len(df)] = [pd.to_datetime('today'), txt_input]
-            # conn.update(data=df)
-            # st.cache_data.clear()
-            # st.cache_resource.clear()
-            # conn.reset()
             st.success('Отправлено!')
         elif submitted and not txt_input:
             st.error('Нужно что-нибудь написать!')
