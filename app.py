@@ -1,8 +1,8 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Student Stories",
-    page_icon="🤗",
+    page_title="#твоеслово.фтт",
+    page_icon="images/ftt-logo.png",
     layout="centered",
     initial_sidebar_state="collapsed",
     menu_items={}
@@ -18,5 +18,5 @@ with st.form('form'):
     if submitted and txt_input:
         st.success('Отправлено!')
     elif submitted and not txt_input:
-        st.warning('Напишите чего-нибудь')
+        st.error('Нужно что-нибудь написать!')
     
